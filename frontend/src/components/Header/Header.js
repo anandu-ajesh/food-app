@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./header.module.css";
+import { useCart } from "../../hooks/useCart";
 
 export default function Header() {
   const user = {
     name: "John ",
   };
 
-  const cart = {
-    totalCount: 10,
-  };
+  const { cart } = useCart();
 
   const logout = () => {};
   return (
@@ -17,7 +16,7 @@ export default function Header() {
       <header className={classes.header}>
         <div className={classes.container}>
           <Link to="/" className={classes.logo}>
-            Go4Food
+            Food On Wheels
           </Link>
 
           <nav>
@@ -28,7 +27,9 @@ export default function Header() {
                   <div className={classes.menu}>
                     <Link to="/profile">Profile</Link>
                     <Link to="/orders">Orders</Link>
-                    <a onClick={logout}>Logout</a>
+                    <a href onClick={logout}>
+                      Logout
+                    </a>
                   </div>
                 </li>
               ) : (

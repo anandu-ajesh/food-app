@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Holtwood+One+SC&family=Honk&family=Monoton&family=Rubik+Scribble&display=swap");
 .header {
   background: rgb(14, 2, 78);
   padding: 0;
@@ -21,7 +22,9 @@
 }
 
 .logo {
-  font-weight: bold;
+  font-weight: 600;
+  font-family: "Holtwood One SC", serif;
+  font-size: 2rem;
   padding: 1rem;
 }
 

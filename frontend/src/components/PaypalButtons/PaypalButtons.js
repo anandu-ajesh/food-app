@@ -15,7 +15,7 @@ import {
       <PayPalScriptProvider
         options={{
           clientId:
-            'AUWcnaHjOUoXVI3IjLpMkM0Kk0Sigq1CUAWP-finHI950yQD2Qni8XPkRbs76Q-_JIT8hJFhKD8YVy3u',
+            'Adr8ndknGOLhS_sWEJ8x9NYPfjmKiHb9IeJ4SaQ2_VGaPseu1uByK9kazunfO0I85s53rpVfPQhq6_pV',
         }}
       >
         <Buttons order={order} />

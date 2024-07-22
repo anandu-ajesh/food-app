@@ -1,50 +1,51 @@
 import { useState, createContext, useContext } from "react";
-import { login, logout, getUser, register } from "../services/userService";
+import * as userService from "../services/userService";
 import { toast } from "react-toastify";
-
 const AuthContext = createContext(null);
-
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(getUser());
-
-  const loginFunc = async (email, password) => {
+  const [user, setUser] = useState(userService.getUser());
+  const login = async (email, password) => {
     try {
-      const user = await login(email, password);
+      const user = await userService.login(email, password);
       setUser(user);
       toast.success("Login Successful");
     } catch (err) {
       toast.error(err.response.data);
     }
   };
-
-  const registerFunc = async (data) => {
+  const register = async (data) => {
     try {
-      const user = await register(data);
+      const user = await userService.register(data);
       setUser(user);
       toast.success("Register Successful");
     } catch (err) {
       toast.error(err.response.data);
     }
   };
-
-  const logoutFunc = () => {
-    logout();
+  const logout = () => {
+    userService.logout();
     setUser(null);
     toast.success("Logout Successful");
   };
 
+  const updateProfile = async (user) => {
+    const updatedUser = await userService.updateProfile(user);
+    toast.success("Profile Update Was Successful");
+    if (updatedUser) setUser(updatedUser);
+  };
+
+  const changePassword = async (passwords) => {
+    await userService.changePassword(passwords);
+    logout();
+    toast.success("Password Changed Successfully, Please Login Again!");
+  };
+
   return (
     <AuthContext.Provider
-      value={{
-        user,
-        login: loginFunc,
-        logout: logoutFunc,
-        register: registerFunc,
-      }}
+      value={{ user, login, logout, register, updateProfile, changePassword }}
     >
       {children}
     </AuthContext.Provider>
   );
 };
-
 export const useAuth = () => useContext(AuthContext);

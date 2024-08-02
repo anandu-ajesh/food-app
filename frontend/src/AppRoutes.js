@@ -10,6 +10,8 @@ import CheckoutPage from './Pages/Checkout/CheckoutPage';
 import PaymentPage from './Pages/Payment/PaymentPage';
 import OrderTrackPage from "./Pages/OrderTrack/OrderTrackPage";
 import ProfilePage from "./Pages/Profile/ProfilePage";
+import OrdersPage from "./Pages/Orders/OrdersPage";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 
 export default function AppRoutes() {
   return (
@@ -25,6 +27,8 @@ export default function AppRoutes() {
       <Route path="/payment" element={ <AuthRoute><PaymentPage /></AuthRoute>}/>
       <Route path="/track/:orderId" element={ <AuthRoute><OrderTrackPage/></AuthRoute>}/>
       <Route path="/profile" element={ <AuthRoute><ProfilePage/></AuthRoute>}/>
+      <Route  path="/orders/:filter?" element={ <AuthRoute><OrdersPage/></AuthRoute>}/>
+      <Route path="/dashboard" element={<AuthRoute><Dashboard/></AuthRoute> }/>
     </Routes>
   );
 }

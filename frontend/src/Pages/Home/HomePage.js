@@ -12,6 +12,7 @@ import {
 } from "../../services/foodService";
 import Thumbnails from "../../components/Thumbnails/Thumbnails";
 import NotFound from "../../components/NotFound/NotFound";
+import Chatbot from "../../components/Chatbot/Chatbot";
 
 const initialState = { foods: [], tags: [] };
 
@@ -53,6 +54,9 @@ export default function HomePage() {
       <Tags tags={tags} />
       {foods.length === 0 && <NotFound linkText="Reset Search" />}
       <Thumbnails foods={foods} />
+      <div className="flex justify-end items-center">
+        <Chatbot/>
+      </div>
     </>
   );
 }
